@@ -1,42 +1,3 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-
-/**
- * Header
- *  Logo
- *  Nav Bar
- * Body
- *  Search
- *  RestaurantContainer
- *      RestaurantCard
- * Footer
- *  Copyright
- *  Links
- *  Address
- *  Contact
- *
- */
-
-const Header = () => {
-  return (
-    <div className="header">
-      <img
-        className="logo"
-        src="https://img.freepik.com/premium-vector/courier-bike-logo-icon-design_658271-1412.jpg?w=740"
-      ></img>
-      <div className="nav-items">
-        <ul>
-          <li>Home</li>
-          <li>About</li>
-          <li>Contact Us</li>
-          <li>Cart</li>
-        </ul>
-      </div>
-    </div>
-  );
-};
-const cardStyle = { marginTop: 5, marginBottom: 5 };
-
 const restList = [
   {
     "@type": "ListItem",
@@ -761,42 +722,4 @@ const restList = [
   },
 ];
 
-const RestaurantCard = (props) => {
-  const { restData } = props;
-  const { name, image, servesCuisine, address, telephone } = restData?.item;
-
-  return (
-    <div className="rest-card" style={{ backgroundColor: "#f0f0f0" }}>
-      <img className="rest-logo" alt="rest-log" src={image}></img>
-      <h3 style={cardStyle}>{name}</h3>
-      <h5 style={cardStyle}>{servesCuisine.join(", ")}</h5>
-      <h5 style={cardStyle}>{address.streetAddress}</h5>
-      <h5 style={cardStyle}>{"Ph: " + telephone}</h5>
-    </div>
-  );
-};
-
-const Body = () => {
-  return (
-    <div className="body">
-      <div className="search">Search</div>
-      <div className="rest-container">
-        {restList.map((restaurant) => (
-          <RestaurantCard key={restaurant.position} restData={restaurant} />
-        ))}
-      </div>
-    </div>
-  );
-};
-
-const AppLayout = () => {
-  return (
-    <div className="app">
-      <Header />
-      <Body />
-    </div>
-  );
-};
-
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<AppLayout />);
+export default restList;
