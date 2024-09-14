@@ -1,6 +1,8 @@
 import RestaurantCard from "./RestaurantCard";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
+import { REST_API } from "../utils/constants";
+import { Link } from "react-router-dom";
 
 const Body = () => {
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
@@ -15,13 +17,14 @@ const Body = () => {
   const fetchData = async () => {
     const data = await fetch(
       //Postman mock server endpoint
-      "https://8b80e596-678e-43ae-bd09-4da0ad3baf5e.mock.pstmn.io/getAll"
+      REST_API
     );
     const json = await data.json();
 
     setListOfRestaurants(json?.data);
-    //console.log(listOfRestaurants);
+
     setFilteredListOfRestaurants(json?.data);
+    console.log(listOfRestaurants);
   };
 
   if (listOfRestaurants.length === 0) {
@@ -68,7 +71,13 @@ const Body = () => {
       </div>
       <div className="rest-container">
         {filteredListOfRestaurants.map((restaurant) => (
-          <RestaurantCard key={restaurant.position} restData={restaurant} />
+          <Link
+            className="rest-link"
+            key={restaurant.item.id}
+            to={"/menu/" + restaurant.item.code}
+          >
+            <RestaurantCard restData={restaurant} />
+          </Link>
         ))}
       </div>
     </div>
