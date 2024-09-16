@@ -16,15 +16,15 @@ const MenuCard = () => {
   const categories = itemCard?.menu_categories;
 
   return (
-    <div className="menuCard">
-      <h1>{name}</h1>
+    <div className="menuCard pl-10">
+      <h1 className="p-4 font-bold text-3xl">{name}</h1>
 
       {categories.map((c) => (
-        <div key={c.id} className="category">
-          <h2>{c.name}</h2>
-          <ul>
+        <div key={c.id} className="category p-2">
+          <h2 className="font-bold">{c.name}</h2>
+          <ul className="pl-4">
             {c.products.map((p) => (
-              <li key={p.id}>
+              <li key={p.id} className="p-1">
                 {p.name} - {p.description}
               </li>
             ))}
