@@ -1,7 +1,11 @@
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import { useContext } from "react";
+import UserContext from "../utils/UserContext";
 
 const Header = () => {
+  const { LoggedinUser } = useContext(UserContext);
+
   return (
     <div className="flex justify-between shadow-lg bg-pink-100">
       <img
@@ -25,6 +29,7 @@ const Header = () => {
           </li>
           <li className="px-4">Cart</li>
         </ul>
+        <div className="pr-4">{LoggedinUser}</div>
       </div>
     </div>
   );

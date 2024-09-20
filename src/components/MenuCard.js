@@ -2,11 +2,15 @@ import useMenuCard from "../utils/useMenuCard";
 import Shimmer from "./Shimmer";
 import { useParams } from "react-router-dom";
 import useMenuCard from "../utils/useMenuCard";
+import MenuCategory from "./MenuCategory";
+import { useState } from "react";
 
 const MenuCard = () => {
   const { resId } = useParams();
 
   const menu = useMenuCard(resId);
+
+  const [showIndex, setShowIndex] = useState(null);
 
   if (menu === null) return <Shimmer />;
 
@@ -16,20 +20,19 @@ const MenuCard = () => {
   const categories = itemCard?.menu_categories;
 
   return (
-    <div className="menuCard pl-10">
+    <div className="text-center">
       <h1 className="p-4 font-bold text-3xl">{name}</h1>
 
-      {categories.map((c) => (
-        <div key={c.id} className="category p-2">
-          <h2 className="font-bold">{c.name}</h2>
-          <ul className="pl-4">
-            {c.products.map((p) => (
-              <li key={p.id} className="p-1">
-                {p.name} - {p.description}
-              </li>
-            ))}
-          </ul>
-        </div>
+      {categories.map((c, index) => (
+        <MenuCategory
+          key={c.id}
+          className="category p-2"
+          data={c}
+          showItem={index === showIndex ? true : false}
+          setShowIndex={() =>
+            index === showIndex ? setShowIndex(null) : setShowIndex(index)
+          }
+        />
       ))}
     </div>
   );

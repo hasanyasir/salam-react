@@ -1,4 +1,4 @@
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard, { withPromotedLabel } from "./RestaurantCard";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
 import { REST_API } from "../utils/constants";
@@ -11,6 +11,8 @@ const Body = () => {
     []
   );
   const [searchText, setSearchText] = useState("");
+
+  const RestaurantCardPromoted = withPromotedLabel(RestaurantCard);
 
   useEffect(() => {
     fetchData();
@@ -88,7 +90,11 @@ const Body = () => {
             key={restaurant.item.id}
             to={"/menu/" + restaurant.item.code}
           >
-            <RestaurantCard restData={restaurant} />
+            {restaurant.item.promoted ? (
+              <RestaurantCardPromoted restData={restaurant} />
+            ) : (
+              <RestaurantCard restData={restaurant} />
+            )}
           </Link>
         ))}
       </div>
