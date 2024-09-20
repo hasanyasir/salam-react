@@ -24,6 +24,7 @@ const MenuCard = () => {
       <h1 className="p-4 font-bold text-3xl">{name}</h1>
 
       {categories.map((c, index) => (
+        //Controlled component as its behaviour is controlled by parent through props
         <MenuCategory
           key={c.id}
           className="category p-2"
