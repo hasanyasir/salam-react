@@ -11,7 +11,11 @@ const ItemsList = ({ items }) => {
   return (
     <div>
       {items.map((item) => (
-        <div key={item.id} className="flex justify-between">
+        <div
+          data-testid="foodItems"
+          key={item.id}
+          className="flex justify-between"
+        >
           <div className="text-left p-2 m-2">
             <div className="font-bold my-2">{item.name}</div>
             <p className="text-sm">{item.description}</p>

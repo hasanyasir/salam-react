@@ -1,13 +1,18 @@
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import UserContext from "../utils/UserContext";
 import { useSelector } from "react-redux";
 
 const Header = () => {
   const { LoggedinUser } = useContext(UserContext);
+  const [loginText, setLoginText] = useState("Login");
 
   const cartItems = useSelector((store) => store.cart.items);
+
+  const handleLogin = () => {
+    loginText === "Login" ? setLoginText("Logout") : setLoginText("Login");
+  };
 
   return (
     <div className="flex justify-between shadow-lg bg-pink-100">
@@ -28,10 +33,13 @@ const Header = () => {
             <Link to="/about">About</Link>
           </li>
           <li className="px-4">
-            <Link to="/contactus">Contact Us</Link>
+            <Link to="/contact">Contact Us</Link>
           </li>
           <li className="px-4">
             <Link to="/cart">Cart({cartItems.length})</Link>
+          </li>
+          <li className="px-4">
+            <button onClick={handleLogin}>{loginText}</button>
           </li>
         </ul>
         <div className="pr-4">{LoggedinUser}</div>

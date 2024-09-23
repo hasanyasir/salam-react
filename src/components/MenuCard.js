@@ -1,7 +1,6 @@
 import useMenuCard from "../utils/useMenuCard";
 import Shimmer from "./Shimmer";
 import { useParams } from "react-router-dom";
-import useMenuCard from "../utils/useMenuCard";
 import MenuCategory from "./MenuCategory";
 import { useState } from "react";
 

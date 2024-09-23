@@ -1,0 +1,24 @@
+{
+  "@type": "ListItem",
+  "position": 2,
+  "item": {
+    "id": 76960,
+    "code": "lt6a",
+    "@type": "Restaurant",
+    "url": "https://www.foodpanda.pk/restaurant/lt6a/xingxung",
+    "name": "Xingxung",
+    "image": "https://images.deliveryhero.io/image/fd-pk/LH/lt6a-listing.jpg",
+    "servesCuisine": ["Chinese"],
+    "priceRange": "$",
+    "telephone": "+923120878070",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "f 11 Markaz infrount of park avenue",
+      "addressLocality": "Islamabad",
+      "postalCode": "44000",
+      "addressCountry": "PK"
+    },
+    "avgRating": "3.6",
+    "promoted": true
+  }
+}

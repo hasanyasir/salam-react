@@ -55,6 +55,7 @@ const Body = () => {
             onChange={(e) => {
               setSearchText(e.target.value);
             }}
+            data-testid="search-input"
           ></input>
           <button
             className="px-2 bg-orange-600 m-2"
